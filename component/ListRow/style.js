@@ -4,7 +4,7 @@ export default {
         marginVertical: 10,
         padding: 10,
         backgroundColor: "white",
-        width: "95%",
+        width: "100%",
         alignSelf: "center"
     }
 }

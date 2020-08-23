@@ -14,6 +14,15 @@ export const container = {
     padding: 10
 }
 export const textStyle = {
-    fontSize: 16,
-    fontFamily: "lucida grande"
+    fontSize: 16
+}
+export const buttonStyle = { 
+    height: 50, 
+    width: "45%", 
+    backgroundColor: PRIMARY_COLOUR, 
+    borderRadius: 5, 
+    justifyContent: "center", 
+    alignItems: "center", 
+    borderColor: 'rgb(129, 174, 179)', 
+    borderWidth: 1 
 }
