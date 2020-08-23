@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, Image, Linking } from 'react-native';
+import { View, Image, Linking } from 'react-native';
 import CustomTextInput from '../../component/CustomTextInput';
 import Button from '../../component/Button';
+import style from './style';
 
-import { shadowStyle, PRIMARY_COLOUR } from '../../resource/style';
+import { shadowStyle, FEMALE_BG_COLOUR, MALE_BG_COLOUR } from '../../resource/style';
 
 function call(number) {
     Linking.openURL(`tel:${number}`);
@@ -14,19 +15,18 @@ function email(id) {
 }
 const Details = (props) => {
     let traveller = props.selectedTraveller;
-    let backGroundColor = props.selectedTraveller.gender==="Female"?'rgba(94, 165, 209,0.4)':'rgba(129, 174, 179,0.4)';
-// 94, 165, 209  m:129, 174, 179
+    let backGroundColor = props.selectedTraveller.gender === "Female" ? FEMALE_BG_COLOUR : MALE_BG_COLOUR;
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "space-evenly", backgroundColor: backGroundColor, padding: 10 }}>
-            <Image source={traveller.avatar} style={{ height: 100, width: 100 }} resizeMode={"contain"} />
-            <View style={[{ width: "90%", alignItems: "center", backgroundColor: "white" }, shadowStyle]}>
-                <CustomTextInput value={traveller.first_name + " " + traveller.last_name} />
-                <CustomTextInput value={'location'} />
-                <CustomTextInput value={traveller.email} />
-                <CustomTextInput value={traveller.phone_number} />
-                <CustomTextInput value={'.....'} />
+        <View style={[{ backgroundColor: backGroundColor }, style.container]}>
+            <Image source={traveller.avatar} style={style.imageDimensions} resizeMode={"contain"} />
+            <View style={[style.cardContainer, shadowStyle]}>
+                <CustomTextInput value={traveller.first_name + " " + traveller.last_name} icon={'person'} />
+                <CustomTextInput value={'location'} icon={'location-city'} />
+                <CustomTextInput value={traveller.email} icon={'email'} />
+                <CustomTextInput value={traveller.phone_number} icon={'contact-phone'} />
+                <CustomTextInput value={'.....'} icon={'remove-red-eye'} />
             </View>
-            <View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between" }}>
+            <View style={style.buttonView}>
                 <Button textValue={"Call"} handleButtonClick={() => call(traveller.phone_number)} />
                 <Button textValue={"Email"} handleButtonClick={() => email(traveller.email)} />
             </View>

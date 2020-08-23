@@ -3,7 +3,9 @@ import { fetchListAction, changeListData, setSelectedTravellerAction } from '../
 import Home from './Home';
 
 const mapStateToProps = (state) => ({
-    travellerList: state.travellerList
+    travellerList: state.travellerList,
+    errorMessage: state.errorText,
+    isError: state.error
 })
 
 const mapDispatchToProps = (dispatch) => ({

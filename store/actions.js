@@ -11,7 +11,7 @@ export const setTravellerList = (state, action) => ({
 export const handleError = (state, action) => ({
     ...state,
     error: true,
-    errorText: action.payload
+    errorText: action.error
 })
 
 export const changeLoaderState = (state, action) => ({

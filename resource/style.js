@@ -1,5 +1,6 @@
-export const PRIMARY_COLOUR = 'cornflowerblue';
-export const SECONDARY_COLOUR = 'white';
+export const PRIMARY_COLOUR = 'white';
+export const FEMALE_BG_COLOUR = 'rgba(94, 165, 209,0.4)';
+export const MALE_BG_COLOUR = 'rgba(129, 174, 179,0.4)';
 export const shadowStyle = {
     borderRadius: 5,
     shadowColor: "rgba(0,0,0,0.7)",
@@ -8,7 +9,7 @@ export const shadowStyle = {
 }
 export const container = {
     flex: 1,
-    backgroundColor: SECONDARY_COLOUR,
+    backgroundColor: PRIMARY_COLOUR,
     alignItems: "center",
     padding: 10
 }

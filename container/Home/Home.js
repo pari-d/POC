@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, FlatList, Text, TextInput } from 'react-native';
+import { SafeAreaView, FlatList, Text, TextInput, View } from 'react-native';
 
 import style from './style';
 
@@ -43,11 +43,15 @@ export default class Home extends Component {
         const { selectedTraveller } = this.props;
         selectedTraveller(selectedItem);
         _this.props.navigation.push('Details');
-        // return null;
-        // return (
-        // _this.props.navigation.navigateTo('Details', { params: { selectedItem } })
-        // )
-        // this.props.navigation.navigateTo('Details', { params: { selectedItem } })
+    }
+
+    renderError() {
+        const { errorMessage } = this.props;
+        return (
+            <View>
+                <Text>{errorMessage}</Text>
+            </View>
+        )
     }
 
     renderSearchBar() {
@@ -86,12 +90,23 @@ export default class Home extends Component {
         )
     }
 
-    render() {
+    renderContent() {
         const { listData } = this.state;
+        if (listData && listData.length > 0) {
+            return this.renderList(listData);
+        }
+        else {
+            return (
+                this.renderText()
+            )
+        }
+    }
+    render() {
+        const { isError } = this.props;
         return (
             <SafeAreaView style={style.container}>
-                {this.renderSearchBar()}
-                {listData && listData.length > 0 ? this.renderList(listData) : this.renderText()}
+                {!isError ? this.renderSearchBar() : null}
+                {isError ? this.renderError() : this.renderContent()}
             </SafeAreaView>
         )
     }

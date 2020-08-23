@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 
 import { shadowStyle, textStyle } from '../../resource/style';
+import style from './style';
 
 const femaleAvatar = require('../../assets/female.jpg');
 const maleAvatar = require('../../assets/male.jpg');
@@ -11,7 +12,7 @@ const ListRow = (props) => {
     let traveller = props.displayItem;
     traveller.avatar = traveller.gender === 'Female' ? femaleAvatar : maleAvatar;
     return (
-        <View style={[{ flex: 0, marginVertical: 10, padding: 10, backgroundColor: "white" }, shadowStyle]}>
+        <View style={[style.container, shadowStyle]}>
             <TouchableOpacity onPress={() => props.handleClick(traveller)} style={{ flexDirection: "row", alignItems: "center" }}>
                 <Image source={traveller.avatar} style={{ height: 40, width: 40, marginHorizontal: 20 }} resizeMode={"contain"} />
                 <View>
